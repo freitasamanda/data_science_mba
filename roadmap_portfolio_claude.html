@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roadmap: Portfólio de Data Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--surface:#fff;--ink:#1b2430;--mute:#5d6877;--line:#d5dbe3;--p1:#0f8b8d;--p2:#2f5bea;--p3:#b97a00;--p4:#7a4fd0;--warn:#c2410c;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12171e;--surface:#1b222c;--ink:#e8edf3;--mute:#9aa6b5;--line:#2d3744;--p1:#3fc2c4;--p2:#7b9bff;--p3:#f0b73a;--p4:#b394f2;--warn:#fb923c;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12171e;--surface:#1b222c;--ink:#e8edf3;--mute:#9aa6b5;--line:#2d3744;--p1:#3fc2c4;--p2:#7b9bff;--p3:#f0b73a;--p4:#b394f2;--warn:#fb923c;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:920px;margin:0 auto;padding:28px 18px 60px}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.1;font-weight:800;margin:0 0 6px;letter-spacing:-.02em}
+#name{font:inherit;color:inherit;background:transparent;border:0;border-bottom:2px dashed var(--line);width:100%;padding:2px 0;outline:none}
+#name:focus{border-bottom-color:var(--p2)}
+.sub{color:var(--mute);margin:8px 0 24px;max-width:60ch}
+.strip{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;margin:0 0 6px}
+.wk{all:unset;cursor:pointer;position:relative;height:84px;background:var(--surface);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.wk .fill{position:absolute;left:0;right:0;bottom:0;background:var(--c);opacity:.85;transition:height .3s}
+.wk span{position:relative;font-weight:600;font-size:13px;padding-bottom:6px;color:var(--ink);text-shadow:0 0 3px var(--surface)}
+.wk.cur{outline:3px solid var(--ink);outline-offset:1px}
+.wk:focus-visible{outline:3px solid var(--p2);outline-offset:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;color:var(--mute);margin-bottom:22px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.top{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:22px}
+.bar{flex:1 1 220px;height:10px;background:var(--line);border-radius:5px;overflow:hidden}
+.bar b{display:block;height:100%;background:var(--ink);width:0;transition:width .3s}
+.ctl{display:flex;align-items:center;gap:10px;font-size:14px}
+input[type=range]{accent-color:var(--p2);width:140px}
+.phase{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:10px;padding:16px 18px;margin-bottom:16px}
+.phase h2{margin:0;font-size:21px;font-weight:600}
+.phase .meta{color:var(--mute);font-size:14px;margin:2px 0 10px}
+ul{list-style:none;margin:0;padding:0}
+li{display:flex;gap:10px;align-items:flex-start;padding:7px 8px;border-radius:6px}
+li.now{background:color-mix(in srgb,var(--c) 14%,transparent)}
+li label{flex:1;cursor:pointer;display:flex;gap:10px;align-items:flex-start}
+li input[type=checkbox]{margin-top:5px;width:17px;height:17px;accent-color:var(--c)}
+li.done .t{text-decoration:line-through;color:var(--mute)}
+.tag{font-size:12px;color:var(--mute);white-space:nowrap;padding-top:3px}
+.late .tag{color:var(--warn);font-weight:600}
+.x{all:unset;cursor:pointer;color:var(--mute);padding:0 6px;font-size:18px;line-height:1.4}
+.x:hover,.x:focus-visible{color:var(--warn)}
+.add{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px}
+.add input,.add select,button.b{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 10px}
+.add input[type=text]{flex:1 1 220px}
+.add input[type=number]{width:72px}
+button.b{cursor:pointer;background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:600}
+button.ghost{background:transparent;color:var(--mute);border-color:var(--line)}
+.foot{margin-top:18px;font-size:13px;color:var(--mute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media (max-width:560px){.wk{height:64px}.wk span{font-size:11px}}
+</style>
+</head>
+<body>
+<main>
+<h1><input id="name" aria-label="Nome do projeto" value="Portfólio de Data Science"></h1>
+<p class="sub">5 projetos de Data Science, cada um com notebook no GitHub e relatório executivo na sua página, pensados para recrutadores de BI e Data Science. Ritmo de 1h a 2h por dia (cerca de 7 a 14 horas por semana). Começa pelo projeto de clustering, que já está em andamento, Cada projeto já inclui as tarefas de revisão e divulgação (README principal, portfólio, CV e LinkedIn), sem etapa separada no fim.</p>
+
+<div class="strip" id="strip" role="group" aria-label="Semanas"></div>
+<div class="legend" id="legend"></div>
+
+<div class="top">
+  <div style="flex:0 0 auto"><strong id="pct">0%</strong> <span style="color:var(--mute)" id="cnt"></span></div>
+  <div class="bar" aria-hidden="true"><b id="fill"></b></div>
+  <label class="ctl">Semana atual <input type="range" id="week" min="1" max="12" value="1"> <strong id="wv">1</strong></label>
+</div>
+
+<div id="phases"></div>
+
+<div class="add">
+  <input type="text" id="nt" placeholder="Nova tarefa">
+  <select id="np" aria-label="Fase"></select>
+  <input type="number" id="nw" min="1" max="12" value="1" aria-label="Semana">
+  <button class="b" id="addb">Adicionar tarefa</button>
+</div>
+<div class="foot"><span>Tarefas atrasadas (semana já passou e não concluídas) aparecem em laranja.</span><button class="b ghost" id="reset">Restaurar roadmap original</button></div>
+</main>
+<script>
+var PH=[
+{id:1,n:"Clustering e risco escolar (em andamento)",r:"Semanas 1–5",c:"var(--p1)",a:1,z:5},
+{id:2,n:"NLP: sentimento em tweets de bots",r:"Semanas 6–7",c:"var(--p2)",a:6,z:7},
+{id:3,n:"Séries temporais com dados do BCB",r:"Semanas 8–9",c:"var(--p3)",a:8,z:9},
+{id:4,n:"Classificação: risco de crédito",r:"Semanas 10–12",c:"var(--p4)",a:10,z:12}];
+function fin(p,w){return [
+[p,w,"Revisar notebook e relatório (links, português, gráficos legíveis)"],
+[p,w,"Adicionar o projeto à tabela do README principal e à lista de relatórios do portfólio"],
+[p,w,"Atualizar CV e LinkedIn com o projeto e o link do relatório"]]}
+var SEED=[
+[1,1,"Definir a pergunta de negócio e documentar o dataset de rendimento acadêmico",1],
+[1,1,"Anonimizar os dados e conferir a LGPD antes de publicar (sem identificadores de alunos)"],
+[1,1,"Limpeza e análise exploratória geral no notebook"],
+[1,1,"Escolher o dataset do projeto de risco de crédito (opções na tarefa da semana 9)"],
+[1,2,"EDA do grupo 3 (inclusão tecnológica): dummies has_internet_access e has_computer_or_laptop"],
+[1,2,"EDA do grupo 4 (situação escolar): school_type, scholarship_status, extra_tutoring, study_hours_per_week e attendance_rate_pct"],
+[1,2,"Tabela-resumo por variável: tipo (categórica, ordinal, numérica, dummy), teste (regressão linear, ANOVA, teste t), coeficientes, p-valor e significância, com eta-quadrado (0 a 100%) nas ANOVAs"],
+[1,3,"Modelo progressivo multivariado com variáveis de controle, usando só as variáveis estatisticamente significantes"],
+[1,3,"Testar a hipótese 1: com extra_tutoring, frequência alta e horas de estudo, renda, inclusão tecnológica e escolaridade/ocupação dos pais deixam de importar"],
+[1,3,"Testar a hipótese 2: escolaridade/ocupação dos pais covariam com a renda (correlações e VIF), e incluir todas gera ruído no modelo"],
+[1,4,"Segmentação com K-Means (k pelo método do cotovelo e silhouette) e perfil de cada grupo"],
+[1,4,"Random Forest para o rendimento acadêmico e Feature Importance, com validação cruzada"],
+[1,4,"Cruzar clusters e importância das variáveis para identificar alunos em maior risco escolar"],
+[1,5,"Escrever as recomendações para Políticas de Inclusão e Permanência e rodar o notebook do zero"],
+[1,5,"Publicar o notebook no GitHub com README próprio"],
+[1,5,"Revisar o template HTML/CSS e montar o relatório executivo do projeto"],
+[2,6,"Documentar a base de tweets; publicar só IDs e resultados agregados, não os textos brutos (termos da plataforma e LGPD)"],
+[2,6,"Consolidar os tópicos do BERTopic por candidato (Lula e Bolsonaro)"],
+[2,6,"Calcular sentimento com modelo em português ou multilíngue do Hugging Face e validar em amostra rotulada à mão"],
+[2,7,"Testar diferenças de sentimento (ex.: Mann-Whitney ou Kruskal-Wallis, tamanho de efeito, correção para múltiplas comparações)"],
+[2,7,"Escrever conclusões e limitações (viés de amostra, natureza dos bots) e rodar o notebook do zero"],
+[2,7,"Publicar o notebook com README e montar o relatório executivo"],
+[3,8,"Escolher a série do BCB (API SGS, ex.: inadimplência, crédito ou Selic) e definir a pergunta de negócio"],
+[3,8,"Limpeza, decomposição (tendência e sazonalidade) e análise exploratória"],
+[3,8,"Baseline simples (ingênuo ou média móvel) e modelo (ex.: SARIMA ou Prophet) com validação temporal"],
+[3,9,"Avaliar fora da amostra (MAE ou MAPE) e discutir limitações da previsão"],
+[3,9,"Publicar o notebook com README"],
+[3,9,"Montar o relatório executivo com a previsão e o que ela significa para o negócio"],
+[4,10,"Escolher o dataset (Give Me Some Credit, Default of Credit Card Clients, German Credit ou Home Credit) e definir a pergunta de negócio"],
+[4,10,"Conferir a licença, documentar a fonte e montar o dicionário de dados"],
+[4,10,"EDA: taxa de inadimplência, valores ausentes, outliers e variáveis mais associadas ao default"],
+[4,11,"Tratar o desbalanceamento (ponderação de classes ou SMOTE só no treino) e dividir treino e teste sem vazamento de dados"],
+[4,11,"Baseline com regressão logística e modelo melhor (Random Forest ou gradient boosting) com validação cruzada"],
+[4,11,"Avaliar com AUC, KS, recall e precisão e escolher o limiar de corte pelo custo de cada tipo de erro"],
+[4,12,"Interpretar o modelo (importância de variáveis e SHAP) e checar a calibração das probabilidades"],
+[4,12,"Traduzir em decisão: política de aprovação, inadimplência esperada e custo de falsos positivos e negativos"],
+[4,12,"Publicar o notebook com README e montar o relatório executivo"]
+].concat(fin(1,5),fin(2,7),fin(3,9),fin(4,12));
+var KEY="roadmap-portfolio-ds-v6",S;
+function seed(){return{name:"Portfólio de Data Science",week:1,n:100,tasks:SEED.map(function(t,i){return{id:i+1,p:t[0],w:t[1],t:t[2],d:!!t[3]}})}}
+function load(){try{var v=localStorage.getItem(KEY);if(v)return JSON.parse(v)}catch(e){}return seed()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+S=load();
+function $(i){return document.getElementById(i)}
+function phaseOf(w){return PH.filter(function(p){return w>=p.a&&w<=p.z})[0]}
+function esc(s){var d=document.createElement("div");d.textContent=s;return d.innerHTML}
+function render(){
+  $("name").value=S.name;$("week").value=S.week;$("wv").textContent=S.week;
+  var strip="";
+  for(var w=1;w<=12;w++){
+    var ts=S.tasks.filter(function(t){return t.w===w}),dn=ts.filter(function(t){return t.d}).length;
+    var h=ts.length?Math.round(dn/ts.length*100):0;
+    strip+='<button class="wk'+(w===S.week?' cur':'')+'" style="--c:'+phaseOf(w).c+'" data-w="'+w+'" aria-label="Semana '+w+': '+dn+' de '+ts.length+' tarefas"><div class="fill" style="height:'+h+'%"></div><span>'+w+'</span></button>';
+  }
+  $("strip").innerHTML=strip;
+  $("legend").innerHTML=PH.map(function(p){return '<span><i style="background:'+p.c+'"></i>'+p.n+' ('+p.r.replace("Semanas ","sem. ")+')</span>'}).join("");
+  var tot=S.tasks.length,dn=S.tasks.filter(function(t){return t.d}).length,pc=tot?Math.round(dn/tot*100):0;
+  $("pct").textContent=pc+"%";$("cnt").textContent=dn+" de "+tot+" tarefas";$("fill").style.width=pc+"%";
+  $("phases").innerHTML=PH.map(function(p){
+    var ts=S.tasks.filter(function(t){return t.p===p.id}).sort(function(a,b){return a.w-b.w});
+    var d=ts.filter(function(t){return t.d}).length;
+    return '<section class="phase" style="--c:'+p.c+'"><h2>'+p.n+'</h2><div class="meta">'+p.r+' · '+d+' de '+ts.length+' concluídas</div><ul>'+
+    ts.map(function(t){
+      var late=!t.d&&t.w<S.week,now=t.w===S.week&&!t.d;
+      return '<li class="'+(t.d?'done ':'')+(late?'late ':'')+(now?'now':'')+'"><label><input type="checkbox" data-id="'+t.id+'"'+(t.d?' checked':'')+'><span class="t">'+esc(t.t)+'</span></label><span class="tag">'+(late?'atrasada · ':'')+'sem. '+t.w+'</span><button class="x" data-del="'+t.id+'" aria-label="Remover tarefa">×</button></li>';
+    }).join("")+'</ul></section>';
+  }).join("");
+  save();
+}
+$("np").innerHTML=PH.map(function(p){return '<option value="'+p.id+'">'+p.n+'</option>'}).join("");
+document.addEventListener("click",function(e){
+  var w=e.target.closest("[data-w]");if(w){S.week=+w.dataset.w;render();return}
+  var x=e.target.closest("[data-del]");if(x){S.tasks=S.tasks.filter(function(t){return t.id!==+x.dataset.del});render()}
+});
+document.addEventListener("change",function(e){
+  if(e.target.dataset.id){S.tasks.forEach(function(t){if(t.id===+e.target.dataset.id)t.d=e.target.checked});render()}
+});
+$("week").addEventListener("input",function(){S.week=+this.value;render()});
+$("name").addEventListener("input",function(){S.name=this.value;save()});
+function add(){
+  var t=$("nt").value.trim();if(!t){$("nt").focus();return}
+  var w=Math.min(12,Math.max(1,+$("nw").value||1));
+  S.tasks.push({id:S.n++,p:+$("np").value,w:w,t:t,d:false});$("nt").value="";render();
+}
+$("addb").addEventListener("click",add);
+$("nt").addEventListener("keydown",function(e){if(e.key==="Enter")add()});
+$("reset").addEventListener("click",function(){if(confirm("Restaurar o roadmap original? Suas alterações serão perdidas.")){S=seed();render()}});
+render();
+</script>
+</body>
+</html>
