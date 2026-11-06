@@ -1,0 +1,48 @@
+Feature,VIF
+family_income_bracket_Low,5.245810438966755
+family_income_bracket_Lower-Middle,5.114795089203191
+family_income_bracket_Middle,4.439853475340577
+family_income_bracket_Upper-Middle,2.864599526565071
+scholarship_status_No Scholarship,2.6609687596865585
+scholarship_status_Partial,2.5327999956250533
+mother_occupation_Homemaker,2.122444089607633
+father_education_level_Secondary,2.107625154906686
+mother_education_level_Secondary,2.073827818308854
+father_education_level_Primary,2.0412255138328534
+father_occupation_Unemployed,1.9908601984006318
+mother_education_level_Primary,1.9871902811965478
+residence_type_Urban,1.954883660532203
+mother_occupation_Unemployed,1.9515924881910547
+father_occupation_Skilled Labor / Trade,1.8866628734767945
+mother_occupation_Skilled Labor / Trade,1.8713211922105906
+father_occupation_Professional,1.840563473190289
+mother_occupation_Professional,1.8397536394192309
+mother_education_level_Higher Secondary,1.8346813276568774
+father_occupation_Clerical / Service,1.8334123344172264
+father_education_level_Higher Secondary,1.8295573908918306
+mother_occupation_Clerical / Service,1.7657429353705631
+father_occupation_Unskilled Labor,1.7158921395177706
+father_occupation_Managerial / Executive,1.7063317545151684
+mother_occupation_Unskilled Labor,1.7026716634314747
+mother_occupation_Managerial / Executive,1.6798823297920615
+father_education_level_No Formal Education,1.663641403226058
+mother_education_level_No Formal Education,1.6593872571194908
+mother_education_level_Master's Degree,1.5453947929076002
+father_education_level_Master's Degree,1.5371936301555134
+residence_type_Semi-Urban,1.5016675556603802
+distance_to_school_km,1.4295960781997195
+mother_education_level_Doctorate,1.3657023450379806
+father_education_level_Doctorate,1.3447649727036728
+attendance_rate_pct,1.202137217860835
+study_hours_per_week,1.1725719676130888
+school_type_Private-Unaided,1.163680501624122
+school_type_Government-Aided,1.1627846298686693
+parental_involvement_score,1.1505681435701958
+has_internet_access,1.1502146549719217
+has_computer_or_laptop,1.1103508946827414
+extra_tutoring,1.0579459617840918
+gender_Other,1.0357243159954528
+gender_Male,1.0335141225644755
+family_size,1.0210668732814205
+single_parent_household,1.0202995944533773
+age,1.0050688676464339

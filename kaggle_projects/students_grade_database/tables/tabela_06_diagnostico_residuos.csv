@@ -1,0 +1,3 @@
+Teste,Estatística,P-Valor,Hipótese Nula (H0),Conclusão
+Breusch-Pagan (Heterocedasticidade),56.12,7.1233e-02,Resíduos Homocedásticos,Heterocedasticidade Rejeitada (p >= 0.05)
+Jarque-Bera (Normalidade),6812.74,0.0000e+00,Resíduos Normalmente Distribuídos,Desvio de Normalidade (p < 0.05)

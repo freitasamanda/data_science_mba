@@ -1,0 +1,20 @@
+bloco_teorico,variavel,tipo_variavel,teste_estatistico,estatistica_teste,p_valor_original,p_valor_holm,p_valor_fdr,significativo_pos_correcao
+2- Estrutura familiar,family_income_bracket,ordinal,ANOVA F-test,404.712193101342,0.0,0.0,0.0,Sim
+2- Estrutura familiar,father_education_level,ordinal,ANOVA F-test,224.57983362506795,2.796504517074664e-272,5.033708130734395e-271,2.656679291220931e-271,Sim
+2- Estrutura familiar,mother_education_level,ordinal,ANOVA F-test,223.8446966376992,1.6941191260548293e-271,2.88000251429321e-270,1.0729421131680587e-270,Sim
+4- Situação escolar,study_hours_per_week,numerica,Regressão OLS Univariada,25.1901326712473,1.7178106682137075e-136,2.748497069141932e-135,8.159600674015112e-136,Sim
+4- Situação escolar,attendance_rate_pct,numerica,Regressão OLS Univariada,18.190955668892997,6.108131507231292e-73,9.16219726084694e-72,2.321089972747891e-72,Sim
+3- Inclusão tecnológica,has_internet_access,dummy,Teste T de Welch,-18.069287316416645,5.196002494998829e-72,7.274403492998361e-71,1.6454007900829627e-71,Sim
+3- Inclusão tecnológica,has_computer_or_laptop,dummy,Teste T de Welch,-17.180234530327912,2.8970301994848286e-65,3.7661392593302774e-64,7.863367684315965e-65,Sim
+2- Estrutura familiar,mother_occupation,categorica,ANOVA F-test,29.913108896210616,2.8999689082048064e-41,3.4799626898457676e-40,6.887426156986416e-41,Sim
+4- Situação escolar,extra_tutoring,dummy,Teste T de Welch,-12.783038987814786,9.105546889424151e-37,1.0016101578366566e-35,1.922282121100654e-36,Sim
+2- Estrutura familiar,parental_involvement_score,ordinal,ANOVA F-test,27.558238842249242,8.27004294290023e-23,8.270042942900231e-22,1.571308159151044e-22,Sim
+2- Estrutura familiar,father_occupation,categorica,ANOVA F-test,14.166547002684695,3.80467935637238e-16,3.424211420735142e-15,6.571718888279566e-16,Sim
+4- Situação escolar,scholarship_status,ordinal,ANOVA F-test,20.387397615891423,1.448261720369608e-09,1.1586093762956864e-08,2.2930810572518796e-09,Sim
+2- Estrutura familiar,family_size,numerica,Regressão OLS Univariada,-5.732135580123889,1.015581159987914e-08,7.109068119915398e-08,1.484310926136182e-08,Sim
+2- Estrutura familiar,residence_type,categorica,ANOVA F-test,11.747180443909103,8.002818756101709e-06,4.801691253661025e-05,1.0860968311852319e-05,Sim
+2- Estrutura familiar,single_parent_household,dummy,Teste T de Welch,2.7474168046247347,0.006053343136633616,0.03026671568316808,0.007667567973069247,Sim
+2- Estrutura familiar,distance_to_school_km,numerica,Regressão OLS Univariada,-2.6882670962914395,0.0071924897708141216,0.03026671568316808,0.00854108160284177,Sim
+1- Características dos alunos,gender,categorica,ANOVA F-test,0.3701520451113825,0.6906371865406234,1.0,0.771888620251285,Não
+1- Características dos alunos,age,numerica,Regressão OLS Univariada,0.18935221462033386,0.8498199703826221,1.0,0.8970321909594345,Não
+4- Situação escolar,school_type,categorica,ANOVA F-test,0.07981702057768435,0.9232857624046419,1.0,0.9232857624046419,Não

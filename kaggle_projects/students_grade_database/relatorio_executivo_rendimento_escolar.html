@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Executivo & Analítico: Predição de Rendimento Escolar e Segmentação de Alunos</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary: #0f766e;
+            --accent: #d97706;
+            --danger: #b91c1c;
+            --success: #15803d;
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --surface-card: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #475569;
+            --border-light: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.65;
+            padding: 2.5rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4, #10b981);
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            padding: 0.35rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.35rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(to right, #f8fafc, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 900px;
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.75rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .meta-info strong {
+            color: var(--text-secondary);
+        }
+
+        .section-card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2 .step-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: var(--primary-light);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #cbd5e1;
+            margin: 1.5rem 0 0.85rem 0;
+        }
+
+        p {
+            color: #cbd5e1;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+        }
+
+        .highlight-box {
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 4px solid var(--primary-light);
+            padding: 1.25rem 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1.5rem 0;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .kpi-card {
+            background: var(--surface-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .kpi-card .kpi-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .kpi-card .kpi-val {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: #fff;
+            margin: 0.35rem 0;
+        }
+
+        .kpi-card .kpi-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .img-container {
+            margin: 2rem 0;
+            background: #090d16;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .img-caption {
+            margin-top: 0.85rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            text-align: left;
+            background: rgba(15, 23, 42, 0.4);
+        }
+
+        th {
+            background: #1e293b;
+            color: #f1f5f9;
+            font-weight: 600;
+            padding: 0.85rem 1rem;
+            border-bottom: 2px solid var(--border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid rgba(71, 85, 105, 0.5);
+            color: #cbd5e1;
+        }
+
+        tr:hover td {
+            background: rgba(51, 65, 85, 0.4);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .status-sig {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .status-danger {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .status-warn {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .diff-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .diff-card.initial {
+            border-top: 4px solid #ef4444;
+        }
+
+        .diff-card.robust {
+            border-top: 4px solid #10b981;
+        }
+
+        .diff-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .diff-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .diff-card ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.92rem;
+            color: #cbd5e1;
+        }
+
+        .diff-card.initial ul li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0;
+            font-size: 0.85rem;
+        }
+
+        .diff-card.robust ul li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            font-size: 0.85rem;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            color: #38bdf8;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.88rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem 0 1rem 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-light);
+        }
+
+        @media (max-width: 768px) {
+            .diff-grid {
+                grid-template-columns: 1fr;
+            }
+
+            body {
+                padding: 1rem;
+            }
+
+            .section-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <span class="badge-tag">Data Science MBA • Projeto Aplicado</span>
+            <h1>Relatório de Predição de Rendimento Escolar e Segmentação Pedagógica</h1>
+            <p class="subtitle">
+                Análise econométrica avançada, controle de múltiplos testes, diagnóstico de multicolinearidade (VIF),
+                modelagem cumulativa OLS robusta (HC3), machine learning com Random Forest e clusterização multifatorial
+                com K-Means.
+            </p>
+            <div class="meta-info">
+                <div><strong>Base de Dados:</strong> <code>student_grade_ses_dataset.csv</code> (12.025 observações, 29
+                    atributos)</div>
+                <div><strong>Variável Alvo:</strong> <code>final_grade_pct</code> (Nota Final do Aluno: 0 a 100%)</div>
+                <div><strong>Seed Global:</strong> <code>SEED = 42</code> (Reprodutibilidade Estrita)</div>
+            </div>
+        </header>
+
+        <!-- 1. PROBLEMA DE NEGÓCIOS E DECISÕES ANALÍTICAS -->
+        <div class="section-card">
+            <h2><span class="step-num">1</span> Contexto do Problema de Negócios & Decisões Analíticas</h2>
+            <p>
+                O rendimento escolar e a evasão acadêmica decorrem de uma teia interligada de fatores demográficos,
+                socioeconômicos, estruturais e comportamentais. O objetivo central deste projeto é <strong>isolar o peso
+                    de cada dimensão
+                    sobre a nota final</strong>, identificar até que ponto hábitos de frequência e estudo conseguem
+                atenuar carências econômicas de origem,
+                e fornecer uma <strong>estratificação clara em 4 perfis de alunos</strong> para intervenção pedagógica
+                prioritária.
+            </p>
+
+            <div class="grid-2">
+                <div class="kpi-card">
+                    <div class="kpi-label">Amostra Analisada</div>
+                    <div class="kpi-val">12.025</div>
+                    <div class="kpi-desc">Estudantes avaliados em múltiplos anos letivos</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Nota Média Global</div>
+                    <div class="kpi-val">60.2%</div>
+                    <div class="kpi-desc">Desvio-padrão de 11.2 p.p.</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Alunos em Risco Crítico</div>
+                    <div class="kpi-val">9.3%</div>
+                    <div class="kpi-desc">Frequência escolar abaixo de 75% e nota média de 38.8%</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-label">Poder Preditivo Máximo (R²)</div>
+                    <div class="kpi-val">20.9%</div>
+                    <div class="kpi-desc">Modelo OLS com Erros Robustos (HC3)</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Arquitetura das Decisões Analíticas Adotadas:</strong>
+                <br>
+                1. <strong>Controle de Múltiplos Testes:</strong> Aplicação de Holm e False Discovery Rate (FDR) para
+                evitar falsos positivos.<br>
+                2. <strong>Diagnóstico de VIF:</strong> Identificação e eliminação de variáveis com colinearidade
+                inflacionada (&ge; 5).<br>
+                3. <strong>Blocos Conceituais Cumulativos:</strong> Demografia &rarr; Estrutura Familiar &rarr;
+                Tecnologia &rarr; Hábitos Escolares, comparando R² ajustado e AIC.<br>
+                4. <strong>Correção de Heterocedasticidade:</strong> Erros-padrão robustos HC3 de MacKinnon-White.<br>
+                5. <strong>Pipeline Anti-Leakage:</strong> Separação treino/teste antes de imputação e padronização.<br>
+                6. <strong>Segmentação K=4 Validada:</strong> Curvas de cotovelo, silhueta e projeção PCA com radar de
+                intervenção.
+            </div>
+        </div>
+
+        <!-- 2. PASSO A PASSO ADOTADO E MODELAGEM PROGRESSIVA -->
+        <div class="section-card">
+            <h2><span class="step-num">2</span> Passo a Passo Metodológico & Modelos Cumulativos OLS</h2>
+            <p>
+                Em vez de lançar todas as variáveis em uma regressão cega, a abordagem progressiva cumulativa baseia-se
+                na
+                literatura de sociologia da educação. Agrupamos as features em 4 blocos e ajustamos modelos
+                incrementais,
+                monitorando o ganho de explicação real (<code>R² ajustado</code>) e o balanço de parcimônia dado pelo
+                Critério de Informação de Akaike (<code>AIC</code>).
+            </p>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modelo Cumulativo</th>
+                            <th>Qtd Variáveis</th>
+                            <th>R²</th>
+                            <th>R² Ajustado</th>
+                            <th>AIC (Akaike)</th>
+                            <th>BIC</th>
+                            <th>F-Estatística (p-valor)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Modelo 1: Demografia</strong> (idade/gênero)</td>
+                            <td>1</td>
+                            <td>0.0002</td>
+                            <td>0.0001</td>
+                            <td>74.799,4</td>
+                            <td>74.813,7</td>
+                            <td>1.70 (p = 0.192)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Modelo 2: + Estrutura Familiar & Renda</strong></td>
+                            <td>25</td>
+                            <td>0.1724</td>
+                            <td>0.1702</td>
+                            <td>73.033,7</td>
+                            <td>73.220,3</td>
+                            <td>80.11 (p &lt; 0.001)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Modelo 3: + Inclusão Tecnológica</strong></td>
+                            <td>27</td>
+                            <td>0.1828</td>
+                            <td>0.1805</td>
+                            <td>72.915,9</td>
+                            <td>73.116,9</td>
+                            <td>79.79 (p &lt; 0.001)</td>
+                        </tr>
+                        <tr style="background: rgba(34, 197, 94, 0.1);">
+                            <td><strong>Modelo 4: Completo (+ Hábitos Escolares)</strong></td>
+                            <td>34</td>
+                            <td><strong>0.2122</strong></td>
+                            <td><strong>0.2094</strong></td>
+                            <td><strong>72.576,2</strong></td>
+                            <td><strong>72.834,6</strong></td>
+                            <td><strong>76.08 (p &lt; 0.001)</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                <strong>Interpretação Simples dos Resultados:</strong>
+                O <em>AIC</em> caiu drasticamente de 74.799 para 72.576. Menor AIC indica um modelo superior, que premia
+                a capacidade
+                explicativa sem carregar termos redundantes. A inclusão da dimensão escolar (frequência, horas de
+                dedicação e reforço)
+                agregou quase 3 pontos percentuais de R² e atenuou a penalidade dos fatores socioeconômicos,
+                demonstrando o efeito mediador do comportamento escolar.
+            </p>
+
+            <h3>O Forest Plot dos Coeficientes Robustos (HC3)</h3>
+            <p>
+                Devido à presença de heterocedasticidade nos resíduos (teste de Breusch-Pagan com p-valor &lt; 0.10 e
+                Jarque-Bera com assimetria residual),
+                o modelo foi reajustado com estimador sanduíche <code>HC3</code> de MacKinnon-White, garantindo
+                erros-padrão e intervalos de confiança não inflacionados.
+            </p>
+
+            <div class="img-container">
+                <img src="viz/07_forest_plot_hc3.png" alt="Forest Plot dos Coeficientes Robustos HC3">
+                <div class="img-caption">Figura 1: Forest Plot exibindo os coeficientes Beta (impacto percentual na
+                    nota) e Intervalos de Confiança de 95% do modelo OLS HC3.</div>
+            </div>
+
+            <h3>Significado Prático dos Coeficientes (&beta;):</h3>
+            <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem; color: #cbd5e1;">
+                <li><code>family_income_bracket_Low (&beta; = -5.76)</code>: Pertencer à faixa de menor renda familiar
+                    acarreta, em média, uma perda de <strong>5,76 pontos percentuais</strong> na nota final do aluno em
+                    relação à faixa de alta renda, mantendo todas as demais condições constantes.</li>
+                <li><code>attendance_rate_pct (&beta; = +0.22)</code>: Cada aumento de 10 pontos percentuais na taxa de
+                    frequência escolar eleva a nota final em aproximadamente <strong>2,2 pontos percentuais</strong>.
+                </li>
+                <li><code>study_hours_per_week (&beta; = +0.18)</code>: Cada hora adicional de estudo extraclasse por
+                    semana agrega em média <strong>0,18 p.p.</strong> na avaliação final.</li>
+                <li><code>has_computer_or_laptop (&beta; = +0.94)</code>: A disponibilidade de computador em casa agrega
+                    <strong>quase 1 ponto percentual completo</strong> na nota média do estudante.</li>
+            </ul>
+        </div>
+
+        <!-- 3. MACHINE LEARNING & PERMUTATION IMPORTANCE -->
+        <div class="section-card">
+            <h2><span class="step-num">3</span> Machine Learning: Baseline Benchmark & Permutation Importance</h2>
+            <p>
+                Para validar a capacidade preditiva em ambiente de produção sem vazamento de dados (<em>data
+                    leakage</em>),
+                estruturamos um <code>ColumnTransformer</code> acoplado ao <code>Pipeline</code> scikit-learn com
+                partição 80/20 (treino/teste, seed=42).
+                Comparamos o Random Forest contra dois baselines essenciais:
+            </p>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modelo Avaliado</th>
+                            <th>CV MAE Treino (Média ± Std)</th>
+                            <th>CV R² Treino (Média ± Std)</th>
+                            <th>MAE Teste (Inédito)</th>
+                            <th>R² Teste (Inédito)</th>
+                            <th>Diagnóstico de Ajuste</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Dummy Regressor (Média)</strong></td>
+                            <td>8.9832 ± 0.046</td>
+                            <td>-0.0015 ± 0.001</td>
+                            <td>8.9314</td>
+                            <td>-0.0001</td>
+                            <td><span class="status-badge status-danger">Linha de Base Pura</span></td>
+                        </tr>
+                        <tr style="background: rgba(59, 130, 246, 0.1);">
+                            <td><strong>Regressão Linear Múltipla</strong></td>
+                            <td>7.8115 ± 0.061</td>
+                            <td>0.2008 ± 0.015</td>
+                            <td><strong>7.8767</strong></td>
+                            <td><strong>0.1929</strong></td>
+                            <td><span class="status-badge status-sig">Melhor Equilíbrio e Generalização</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Random Forest Regressor (100 árvores)</strong></td>
+                            <td>8.1548 ± 0.054</td>
+                            <td>0.1486 ± 0.014</td>
+                            <td>8.2386</td>
+                            <td>0.1203</td>
+                            <td><span class="status-badge status-warn">Sensível a Ruído / Sobreajuste Leve</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="img-container">
+                <img src="viz/08_rf_permutation_e_predicoes.png"
+                    alt="Permutation Importance e Predições Reais vs Preditas">
+                <div class="img-caption">Figura 2: (Esquerda) Permutation Importance no teste (n_repeats=10,
+                    scoring=R²). (Direita) Dispersão de valores reais vs. preditos.</div>
+            </div>
+
+            <p>
+                <strong>Por que a Permutation Importance é crucial?</strong>
+                A importância tradicional de árvores baseada na impureza de Gini superestima fortemente variáveis
+                contínuas com alta cardinalidade.
+                A <em>Permutation Importance</em> mede a perda direta de R² ao embaralhar os valores de cada coluna no
+                conjunto de teste.
+                O diagnóstico confirma que <strong>faixa de renda familiar</strong> (queda de 0,087 no R²),
+                <strong>horas semanais de estudo</strong> (0,028)
+                e <strong>nível de instrução dos pais</strong> são as variáveis de real relevância causal na predição.
+            </p>
+        </div>
+
+        <!-- 4. SEGMENTAÇÃO DE ALUNOS COM K-MEANS -->
+        <div class="section-card">
+            <h2><span class="step-num">4</span> Segmentação Refatorada de Alunos (K-Means, K=4)</h2>
+            <p>
+                A definição do número de grupos foi fundamentada na literatura pedagógica (4 quadrantes de
+                risco/rendimento) e
+                rigorosamente validada pelas curvas de inércia intra-cluster (<strong>Elbow Method</strong>) e do
+                <strong>Coeficiente de Silhueta</strong>.
+            </p>
+
+            <div class="img-container">
+                <img src="viz/09_clustering_cotovelo_silhueta.png" alt="Curvas de Cotovelo e Silhueta do K-Means">
+                <div class="img-caption">Figura 3: Diagnóstico metodológico de agrupamento: Inércia intra-cluster
+                    (cotovelo suave em K=4) e Silhueta estável.</div>
+            </div>
+
+            <div class="img-container">
+                <img src="viz/10_clustering_pca_radar_refatorado.png"
+                    alt="PCA e Radar Multifatorial por Perfil de Aluno">
+                <div class="img-caption">Figura 4: (Esquerda) Projeção bidimensional com PCA dos 4 clusters. (Direita)
+                    Radar de perfilamento comparativo (escalas 0-100%).</div>
+            </div>
+
+            <h3>Perfilamento Multidimensional dos 4 Segmentos</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Perfil do Segmento</th>
+                            <th>Qtd Alunos</th>
+                            <th>% Base</th>
+                            <th>Nota Média</th>
+                            <th>Frequência Escolar</th>
+                            <th>Horas Estudo/Semana</th>
+                            <th>Acesso à Internet</th>
+                            <th>Possui Computador</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-left: 4px solid #e74c3c;">
+                            <td><strong style="color: #f87171;">1. Risco de Reprovação</strong></td>
+                            <td>1.119</td>
+                            <td>9.3%</td>
+                            <td><strong>38.8%</strong></td>
+                            <td>73.7%</td>
+                            <td>10.4 h</td>
+                            <td>23.0%</td>
+                            <td>33.0%</td>
+                        </tr>
+                        <tr style="border-left: 4px solid #f39c12;">
+                            <td><strong style="color: #fbbf24;">2. Baixo Rendimento</strong></td>
+                            <td>3.487</td>
+                            <td>29.0%</td>
+                            <td><strong>53.1%</strong></td>
+                            <td>81.8%</td>
+                            <td>14.7 h</td>
+                            <td>61.0%</td>
+                            <td>52.0%</td>
+                        </tr>
+                        <tr style="border-left: 4px solid #3498db;">
+                            <td><strong style="color: #60a5fa;">3. Na Média</strong></td>
+                            <td>4.810</td>
+                            <td>40.0%</td>
+                            <td><strong>64.9%</strong></td>
+                            <td>86.8%</td>
+                            <td>18.9 h</td>
+                            <td>84.0%</td>
+                            <td>78.0%</td>
+                        </tr>
+                        <tr style="border-left: 4px solid #2ecc71;">
+                            <td><strong style="color: #4ade80;">4. Alto Rendimento</strong></td>
+                            <td>2.609</td>
+                            <td>21.7%</td>
+                            <td><strong>73.8%</strong></td>
+                            <td>91.1%</td>
+                            <td>26.6 h</td>
+                            <td>93.0%</td>
+                            <td>90.0%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 5. CONCLUSÃO TÉCNICA E RECOMENDAÇÕES PEDAGÓGICAS -->
+        <div class="section-card">
+            <h2><span class="step-num">5</span> Conclusão: Diferenças Metodológicas & Plano Pedagógico</h2>
+
+            <h3>Comparativo Técnico: Abordagem Inicial vs. Abordagem Robusta Implementada</h3>
+            <div class="diff-grid">
+                <div class="diff-card initial">
+                    <h4>Abordagem Inicial (Exploratória Padrão) <span class="status-badge status-danger">Frágil</span>
+                    </h4>
+                    <ul>
+                        <li>Seleção de variáveis baseada em p-valor bruto univariado (alto risco de falsos positivos
+                            pelo problema de múltiplos testes).</li>
+                        <li>Sem verificação de multicolinearidade (coeficientes de regressão inflacionados por variáveis
+                            correlacionadas).</li>
+                        <li>Pré-processamento aplicado em todo o dataset antes da divisão (risco de vazamento de dados /
+                            <em>data leakage</em>).</li>
+                        <li>Importância do Random Forest medida por impureza de Gini pura (distorção em favor de
+                            variáveis contínuas).</li>
+                        <li>Ausência de baselines simples (impossibilidade de checar se o modelo complexo realmente
+                            supera a média).</li>
+                        <li>Agrupamento K-Means sem diagnóstico empírico de silhueta e estabilização de convergência.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="diff-card robust">
+                    <h4>Abordagem Robusta Implementada <span class="status-badge status-sig">Confiável</span></h4>
+                    <ul>
+                        <li>Controle de erro por família com penalizações de Holm e False Discovery Rate (FDR via
+                            Benjamini-Hochberg).</li>
+                        <li>Cálculo iterativo do Variance Inflation Factor (VIF &lt; 5.0), limpando colinearidades
+                            excessivas.</li>
+                        <li>Arquitetura em Pipeline com <code>ColumnTransformer</code> estritamente acoplada após
+                            <code>train_test_split</code>.</li>
+                        <li>Avaliação por <em>Permutation Importance</em> em conjunto de teste com repetições
+                            estocásticas (n_repeats=10).</li>
+                        <li>Validação comparativa contra Dummy Regressor e Regressão Linear com validação cruzada
+                            5-folds.</li>
+                        <li>Diagnóstico formal de resíduos (Breusch-Pagan) com correção de heterocedasticidade via
+                            estimador sanduíche <code>HC3</code>.</li>
+                        <li>Clusterização K-Means (K=4) auditada por curvas de cotovelo, silhueta e projeção 2D com PCA.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Matriz Central de Diagnóstico & Ações Pedagógicas Recomendadas</h3>
+            <p>
+                Com base na segmentação não supervisionada e nos direcionadores causais identificados na modelagem,
+                estruturamos a política de intervenção escolar em 4 eixos prioritários:
+            </p>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Perfil do Aluno</th>
+                            <th>Diagnóstico Central de Vulnerabilidade</th>
+                            <th>Ações Pedagógicas & Políticas de Intervenção Recomendadas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong style="color: #f87171;">Risco de Reprovação</strong><br>(9.3% da rede)</td>
+                            <td>
+                                Taxa de frequência extremamente baixa (73.7%), forte carência de infraestrutura digital
+                                (apenas 23% com internet)
+                                e baixo engajamento dos responsáveis, resultando em nota média de 38.8%.
+                            </td>
+                            <td>
+                                <strong>Busca Ativa & Resgate Imediato:</strong> Visitas domiciliares para combater o
+                                absenteísmo crônico,
+                                concessão prioritária de bolsas de conectividade e chips 4G, e alocação em tutoria
+                                intensiva individualizada (1:1).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #fbbf24;">Baixo Rendimento</strong><br>(29.0% da rede)</td>
+                            <td>
+                                Frequência escolar regular (81.8%), porém dedicação insuficiente de estudos extraclasse
+                                (14.7h/semana)
+                                e suporte parcial de tecnologia (apenas metade possui computador).
+                            </td>
+                            <td>
+                                <strong>Reforço Escolar no Contraturno:</strong> Criação de salas de estudo orientadas e
+                                abertura de laboratórios
+                                de informática escolares durante os finais de semana para garantir tempo de prática
+                                assistida.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #60a5fa;">Na Média</strong><br>(40.0% da rede)</td>
+                            <td>
+                                Boa assiduidade (86.8%) e infraestrutura satisfatória (78% com computador), mas métodos
+                                de estudo dispersos
+                                e rendimento estagnado em torno de 64.9%.
+                            </td>
+                            <td>
+                                <strong>Oficinas de Métodos Ágeis de Estudo:</strong> Treinamento em técnicas de estudo
+                                ativo (Feynman, repetição espaçada, resolução de simulados)
+                                e programas de monitoria entre pares para alavancar a retenção do conteúdo.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong style="color: #4ade80;">Alto Rendimento</strong><br>(21.7% da rede)</td>
+                            <td>
+                                Alta rotina de estudo (26.6h/semana), frequência acima de 91%, forte engajamento
+                                familiar e nota média de 73.8%.
+                            </td>
+                            <td>
+                                <strong>Iniciação Científica & Mentoria:</strong> Estímulo à participação em Olimpíadas
+                                Científicas,
+                                clubes de robótica e projetos interdisciplinares, atuando também como monitores líderes
+                                dos alunos em recuperação.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>Projeto Desenvolvido no Âmbito do Data Science MBA • Freitas Amanda</p>
+            <p style="margin-top: 0.5rem; font-size: 0.78rem;">
+                Arquivos de dados gerados salvos em <code>kaggle_projects/students_grade_database/tables/</code> (CSV) e
+                gráficos salvos em <code>kaggle_projects/students_grade_database/viz/</code> (PNG).
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+
+</html>

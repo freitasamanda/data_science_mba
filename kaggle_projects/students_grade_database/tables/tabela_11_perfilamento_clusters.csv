@@ -1,0 +1,5 @@
+cluster_aluno,Nota_Final_Media_Pct,Horas_Estudo_Semanais,Frequencia_Escolar_Pct,Engajamento_Pais_1_5,Acesso_Internet_Taxa,Possui_Computador_Taxa,Reforco_Escolar_Taxa,Qtd_Alunos,Pct_Base_%
+Risco de Reprovação,57.62,13.12,84.03,3.09,0.37,0.31,0.16,4421,36.8
+Baixo Rendimento,65.76,13.35,84.39,3.08,0.4,0.34,0.17,2036,16.9
+Na Média,74.62,15.83,87.77,3.42,0.61,0.52,0.31,4993,41.5
+Alto Rendimento,76.15,16.15,88.24,3.51,0.63,0.56,0.31,575,4.8

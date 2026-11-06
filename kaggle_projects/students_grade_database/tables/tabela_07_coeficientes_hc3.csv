@@ -1,0 +1,43 @@
+,Beta_HC3,Erro_Padrao_HC3,IC_95%_Inferior,IC_95%_Superior,P_Valor_HC3,Significante_5%
+father_education_level_No Formal Education,-5.3831,0.5248,-6.4117,-4.3545,1.0986216580376631e-24,Sim
+mother_education_level_No Formal Education,-5.3197,0.5164,-6.3318,-4.3076,6.903188052943509e-25,Sim
+mother_education_level_Primary,-4.0839,0.3875,-4.8434,-3.3244,5.735793911204545e-26,Sim
+father_education_level_Primary,-3.7218,0.3828,-4.472,-2.9715,2.3996554715224074e-22,Sim
+father_education_level_Secondary,-2.8567,0.3534,-3.5493,-2.1641,6.257331977885614e-16,Sim
+scholarship_status_No Scholarship,-2.8551,0.4281,-3.6942,-2.016,2.5808692089835347e-11,Sim
+mother_education_level_Secondary,-2.6922,0.3504,-3.379,-2.0054,1.5595823658792663e-14,Sim
+scholarship_status_Partial,-2.0259,0.4824,-2.9715,-1.0803,2.6791498423277438e-05,Sim
+father_education_level_Higher Secondary,-1.5311,0.3611,-2.2387,-0.8234,2.2315326187801513e-05,Sim
+mother_education_level_Higher Secondary,-1.3994,0.3671,-2.119,-0.6799,0.00013784168347815288,Sim
+single_parent_household,-1.0566,0.302,-1.6486,-0.4647,0.0004673950832770992,Sim
+residence_type_Semi-Urban,-0.5429,0.3037,-1.1382,0.0524,0.07388094676377588,Não
+mother_occupation_Unemployed,-0.3613,0.4165,-1.1777,0.455,0.38568790700094757,Não
+mother_occupation_Unskilled Labor,-0.3236,0.4706,-1.246,0.5987,0.49164801200009245,Não
+family_income_bracket_Lower-Middle,-0.3045,0.281,-0.8553,0.2462,0.2784869387019957,Não
+father_occupation_Managerial / Executive,-0.3016,0.446,-1.1758,0.5726,0.4989177793286633,Não
+family_size,-0.2244,0.0785,-0.3783,-0.0706,0.004246736721927539,Sim
+residence_type_Urban,-0.2161,0.2959,-0.7961,0.3639,0.46526992252810473,Não
+parental_involvement_score,-0.0957,0.1228,-0.3363,0.1449,0.4356896606009414,Não
+father_occupation_Skilled Labor / Trade,-0.0768,0.4152,-0.8905,0.7369,0.8532647045520851,Não
+age,-0.0617,0.0493,-0.1583,0.0349,0.2107990141604389,Não
+mother_occupation_Skilled Labor / Trade,0.0031,0.4057,-0.7921,0.7983,0.9938234462555491,Não
+distance_to_school_km,0.0172,0.0349,-0.0512,0.0856,0.6218483341239851,Não
+family_income_bracket_Middle,0.1125,0.301,-0.4774,0.7024,0.7085153562901783,Não
+attendance_rate_pct,0.1496,0.0144,0.1214,0.1778,2.749611727303428e-25,Sim
+father_occupation_Clerical / Service,0.1705,0.418,-0.6488,0.9898,0.6833271615455978,Não
+study_hours_per_week,0.3162,0.0227,0.2719,0.3606,2.661042594186626e-44,Sim
+mother_occupation_Professional,0.3609,0.4342,-0.4902,1.2119,0.40594546088070615,Não
+mother_occupation_Clerical / Service,0.4079,0.444,-0.4623,1.2781,0.3582862610173595,Não
+father_occupation_Professional,0.4374,0.4158,-0.3775,1.2524,0.2927687767441335,Não
+father_occupation_Unskilled Labor,0.7429,0.4373,-0.1141,1.5999,0.08932513041032156,Não
+mother_occupation_Managerial / Executive,0.8172,0.4389,-0.0431,1.6774,0.0626401146482975,Não
+mother_education_level_Master's Degree,0.9082,0.4848,-0.0419,1.8584,0.061001132453000796,Não
+mother_occupation_Homemaker,0.9423,0.4083,0.142,1.7426,0.02100867914996672,Sim
+father_occupation_Unemployed,1.2333,0.4065,0.4365,2.0301,0.002415530851855155,Sim
+family_income_bracket_Upper-Middle,1.3089,0.3836,0.557,2.0609,0.0006453016736455506,Sim
+extra_tutoring,1.3653,0.2661,0.8438,1.8868,2.871993653812523e-07,Sim
+father_education_level_Master's Degree,1.5549,0.4709,0.632,2.4778,0.0009598467723374573,Sim
+has_internet_access,1.7233,0.2269,1.2785,2.168,3.0951523884210126e-14,Sim
+has_computer_or_laptop,1.8037,0.2251,1.3626,2.2448,1.1080309952494284e-15,Sim
+mother_education_level_Doctorate,2.7627,0.6921,1.4062,4.1193,6.56220776749671e-05,Sim
+father_education_level_Doctorate,4.0246,0.747,2.5605,5.4887,7.142292638824471e-08,Sim

@@ -1,0 +1,5 @@
+Modelo,Qtd_Variaveis,R²,R²_Ajustado,AIC,BIC,F_Estatistica,P_Valor_F
+Modelo 1 (Demografia),1,0.0,-0.0001,74798.8,74813.2,0.41,0.5241455272181457
+Modelo 2 (+ Estrutura Familiar),35,0.1544,0.1513,73248.4,73506.7,50.17,0.0
+Modelo 3 (+ Tecnologia),37,0.1712,0.168,73058.2,73330.9,53.69,0.0
+Modelo 4 (Completo: + Hábitos Escolares),42,0.2049,0.2014,72668.4,72976.9,58.95,0.0

@@ -1,0 +1,9 @@
+Feature,Beta_Mod2_Familia,Beta_Mod3_Tecnologia,Beta_Mod4_Completo,Variacao_Beta_M3_para_M4_(%)
+family_income_bracket_Lower-Middle,-0.1174,-0.1993,-0.3045,-52.8
+family_income_bracket_Middle,0.4947,0.2621,0.1125,-57.06
+family_income_bracket_Upper-Middle,2.2385,1.6914,1.3089,-22.61
+father_education_level_Doctorate,4.3898,4.1804,4.0246,-3.73
+father_education_level_Higher Secondary,-1.8692,-1.6809,-1.5311,8.91
+father_education_level_Master's Degree,1.594,1.5447,1.5549,0.66
+father_education_level_No Formal Education,-5.9189,-5.5642,-5.3831,3.26
+father_education_level_Primary,-4.1929,-3.88,-3.7218,4.08
