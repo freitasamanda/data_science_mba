@@ -1,6 +1,27 @@
 # data_science_mba
 Studying for my Data Science MBA
 
+---
+
+## Repository Projects & Structure
+
+```
+data_science_mba/
+├── kaggle_projects/
+│   └── students_grade_database/
+│       ├── student_grade_prediction copy.ipynb  # Statistical tests, RF & K-Means modeling
+│       ├── student_grade_ses_dataset.csv        # Dataset (12,025 records x 29 columns)
+│       ├── DATA_DICTIONARY.md                   # Full schema, null policies & range specs
+│       ├── model_card.md                        # Model card for RF Regressor & K-Means
+│       └── viz/                                 # Exported charts & analytical visualizations
+├── python_fundamentals/
+│   ├── fundamentals.ipynb                       # Core Python & data manipulation notebooks
+│   └── cheatsheets/                             # Quick-reference cheatsheets
+└── requirements.txt                             # Project dependencies
+```
+
+---
+
 ## Python fundamental libraries
 - pandas: data manipulation
 - numpy: math
